@@ -48,12 +48,17 @@ export const NavSearch = styled.input.attrs({
 })`
   background-color: #eee;
   border-radius: 19px;
-  padding: 0 20px;
+  padding: 0 30px 0 20px;
   box-sizing: border-box;
   height: 38px;
   margin-top: 9px;
   border: none;
   outline: none;
+  color: #777;
+  width: 170px;
+  &.focused {
+    width: 220px;
+  }
 `;
 
 
@@ -82,4 +87,41 @@ export const Button = styled.div`
   padding: 0 20px;
   box-sizing: border-box;
   margin-left: 20px;
+`;
+
+export const NavSerarchWrapper = styled.div`
+  position: relative;
+  float: left;
+  .enter {
+    transition: all .2s ease-out;
+  } 
+  .enter-active {
+    width: 220px;
+  }
+  .enter-done {
+    width: 220px; 
+  }
+  .exit {
+    transition: all .2s ease-out;
+  }
+  .exit-active, .exit-done {
+    width: 160px;
+  } 
+  .iconiconfontzhizuobiaozhun22 {
+    position: absolute;
+    right: 0;
+    top: 9px;
+    text-align: center;
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    border-radius: 50%;
+  }
+  .iconfont {
+    &.focused {
+      color: #fff;
+      background-color: #666;
+    }
+  }
 `;
