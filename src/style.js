@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-createGlobalStyle`
+
+export const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -44,6 +45,7 @@ createGlobalStyle`
     border-spacing: 0;
   }
 `
+
 /*body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
