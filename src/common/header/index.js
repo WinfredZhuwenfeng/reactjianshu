@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
 import {
   HeaderWrapper,
   Logo,
@@ -9,20 +11,10 @@ import {
   Button,
   NavSerarchWrapper
 } from './style';
-import { CSSTransition } from 'react-transition-group';
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      focused: false
-    }
-    this.handleFocuse = this.handleFocuse.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
-  }
-  render() {
-    return (
-      <HeaderWrapper>
+const Header = (props) => {
+  return (
+    <HeaderWrapper>
         <Logo />
         <Nav>
           <NavItem className="left"><i className="iconfont iconzhinanzhen"></i>首页</NavItem>
@@ -32,13 +24,19 @@ class Header extends Component {
           <NavItem className="right">登录</NavItem>
           <NavSerarchWrapper>
             <CSSTransition
-               in={this.state.focused} 
+               in={props.focused} 
                timeout={200}
                className="slide"
             >
-              <NavSearch onBlur={this.handleBlur} onFocus={this.handleFocuse} className={ this.state.focused ? "focused" : ""}></NavSearch>
+              <NavSearch 
+                onBlur={props.handleBlur} 
+                onFocus={props.handleFocuse} 
+                className={props.focused ? "focused" : ""}
+              ></NavSearch>
             </CSSTransition>
-              <i className={ this.state.focused ? "focused iconfont iconiconfontzhizuobiaozhun22" : "iconfont iconiconfontzhizuobiaozhun22"}></i>
+              <i 
+                className={props.focused ? "focused iconfont iconiconfontzhizuobiaozhun22" : "iconfont iconiconfontzhizuobiaozhun22"}
+              ></i>
           </NavSerarchWrapper>
         </Nav>
         <Addition>
@@ -46,19 +44,31 @@ class Header extends Component {
           <Button className="reg">注册</Button>
         </Addition>
       </HeaderWrapper>
-    )
-  }
-  handleFocuse() {
-    this.setState({
-      focused: true
-    })
-  }
-  handleBlur(){
-    this.setState({
-      focused: false
-    }
-    )
+  )
+}
+
+
+const mapStateToProps = (state) => {
+  return {
+    focused: state.header.focused
   }
 }
 
-export default Header
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleFocuse() {
+      const action = {
+        type: 'searchFocues'
+      }
+      dispatch(action)
+    },
+    handleBlur() {
+      const action = {
+        type: 'searchBlur'
+      }
+      dispatch(action)
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
