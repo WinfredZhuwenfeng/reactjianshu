@@ -36,7 +36,12 @@ class Header extends Component {
             <SearchInfoTitle>
               热门搜索
             </SearchInfoTitle>
-            <SearchInfoSwitch onClick={()=>(handleSwitchClick(page, totalPage))}>换一批</SearchInfoSwitch>
+            <SearchInfoSwitch 
+              onClick={()=>(handleSwitchClick(page, totalPage, this.spinIcon))}
+            >
+              <i ref={(icon)=>{this.spinIcon = icon}} className="iconfont iconspin"></i>
+              换一批
+            </SearchInfoSwitch>
           </SearchInfoTitleWrapper>
           <SearchInfoList>
           {pageList}
@@ -48,7 +53,7 @@ class Header extends Component {
     }
   }
   render() {    
-    const { focused, handleBlur, handleFocuse} = this.props
+    const { focused, list, handleBlur, handleFocuse} = this.props
     return (
       <HeaderWrapper>
           <Logo />
@@ -66,7 +71,7 @@ class Header extends Component {
               >
                 <NavSearch 
                   onBlur={handleBlur} 
-                  onFocus={handleFocuse} 
+                  onFocus={()=>(handleFocuse(list))} 
                   className={focused ? "focused" : ""}
                 ></NavSearch>
               </CSSTransition>
@@ -96,8 +101,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleFocuse() {
-      dispatch(actionCreaters.getList())
+    handleFocuse(list) {
+      console.log(list)
+      list.size === 0 && dispatch(actionCreaters.getList())      
       dispatch(actionCreaters.searchFocues())
     },
     handleBlur() {      
@@ -109,7 +115,16 @@ const mapDispatchToProps = (dispatch) => {
     handleMouseLeave() {
       dispatch(actionCreaters.listMouseLeave())
     },
-    handleSwitchClick(page, totalPage) {
+    handleSwitchClick(page, totalPage, spin) {
+      
+      let originAngle = spin.style.transform.replace(/[^0-9]/ig, '')
+      console.log(originAngle);
+      if(originAngle) {
+        originAngle = parseInt(originAngle, 10)
+      }else {
+        originAngle = 0
+      }
+      spin.style.transform = 'rotate(' + (originAngle + 360) +'deg)';
       if(page < totalPage) {
         dispatch(actionCreaters.ListSwitchClick(page+1))
       }else {

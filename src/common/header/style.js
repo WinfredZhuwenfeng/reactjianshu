@@ -80,6 +80,14 @@ export const SearchInfoSwitch = styled.div`
   float: right;
   font-size: 13px;
   color: #969696;
+  cursor: pointer;
+  .iconspin {
+    display: inline-block;
+    font-size: 13px;
+    margin-right: 5px;
+    transition: all .2s ease-in;
+    transform-origin: center center;
+  }
 `
 
 export const SearchInfoList = styled.div` 
