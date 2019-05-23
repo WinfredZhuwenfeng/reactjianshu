@@ -21,10 +21,10 @@ import {
 
 class Header extends Component {
   getListArea = () => {
-    const { focused, list } = this.props
-    if(focused) {
+    const { focused, list, mouseIn, handleMouseEnter, handleMouseLeave } = this.props
+    if(focused || mouseIn) {
       return (
-        <SearchInfo>
+        <SearchInfo onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <SearchInfoTitleWrapper>
             <SearchInfoTitle>
               热门搜索
@@ -84,6 +84,7 @@ class Header extends Component {
 const mapStateToProps = (state) => {
   return {
     focused: state.header.get('focused'),
+    mouseIn: state.header.get('mouseIn'),
     list: state.header.get('list')
   }
 }
@@ -96,6 +97,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleBlur() {      
       dispatch(actionCreaters.searchBlur())
+    },
+    handleMouseEnter() {
+      dispatch(actionCreaters.listMouseEnter())
+    },
+    handleMouseLeave() {
+      dispatch(actionCreaters.listMouseLeave())
     }
   }
 }

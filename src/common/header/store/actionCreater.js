@@ -15,6 +15,14 @@ export const searchBlur = () => ({
   type: actionTypes.SEARCH_BLUR
 });
 
+export const listMouseEnter = () => ({
+  type: actionTypes.LIST_ENTER
+});
+
+export const listMouseLeave = () => ({
+  type: actionTypes.LIST_LEAVE
+});
+
 export const getList = () => {
   return (dispatch) => {
     axios.get('/api/headerList.json').then((res)=>{
