@@ -20,8 +20,15 @@ import {
 } from './style';
 
 class Header extends Component {
-  getListArea = () => {
-    const { focused, list, mouseIn, handleMouseEnter, handleMouseLeave } = this.props
+  getListArea() {
+    const { focused, list, mouseIn, page, totalPage, handleMouseEnter, handleMouseLeave, handleSwitchClick } = this.props;
+    const jsList = list.toJS();
+    const pageList = [];
+    if(jsList.length) {      
+      for(let i = (page - 1) * 9; i < page * 9; i++) {
+        pageList.push(<SearchInfoItem key={jsList[i]}>{jsList[i]}</SearchInfoItem>)
+      }
+    }
     if(focused || mouseIn) {
       return (
         <SearchInfo onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
@@ -29,14 +36,10 @@ class Header extends Component {
             <SearchInfoTitle>
               热门搜索
             </SearchInfoTitle>
-            <SearchInfoSwitch>换一批</SearchInfoSwitch>
+            <SearchInfoSwitch onClick={()=>(handleSwitchClick(page, totalPage))}>换一批</SearchInfoSwitch>
           </SearchInfoTitleWrapper>
           <SearchInfoList>
-          {
-            list.map((item)=>{
-              return <SearchInfoItem key={item}>{item}</SearchInfoItem>
-            })
-          }
+          {pageList}
           </SearchInfoList>
         </SearchInfo>
       )
@@ -85,7 +88,9 @@ const mapStateToProps = (state) => {
   return {
     focused: state.header.get('focused'),
     mouseIn: state.header.get('mouseIn'),
-    list: state.header.get('list')
+    list: state.header.get('list'),
+    page: state.header.get('page'),
+    totalPage: state.header.get('totalPage')
   }
 }
 
@@ -103,6 +108,13 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleMouseLeave() {
       dispatch(actionCreaters.listMouseLeave())
+    },
+    handleSwitchClick(page, totalPage) {
+      if(page < totalPage) {
+        dispatch(actionCreaters.ListSwitchClick(page+1))
+      }else {
+        dispatch(actionCreaters.ListSwitchClick(1))
+      }
     }
   }
 }

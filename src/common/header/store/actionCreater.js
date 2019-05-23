@@ -4,7 +4,8 @@ import { fromJS } from 'immutable';
 
 const changeList = (data) => ({
   type: actionTypes.CHANGE_LIST,
-  data: fromJS(data)
+  data: fromJS(data),
+  totalPage: Math.ceil(data.length / 10)
 });
 
 export const searchFocues = () => ({
@@ -23,10 +24,15 @@ export const listMouseLeave = () => ({
   type: actionTypes.LIST_LEAVE
 });
 
+export const ListSwitchClick = (page) => ({
+  type: actionTypes.LIST_SWITCH,
+  page
+});
+
 export const getList = () => {
   return (dispatch) => {
     axios.get('/api/headerList.json').then((res)=>{
-      const data = res.data
+      const data = res.data      
       dispatch(changeList(data.data))
     }).catch((err)=>{
       console.log(err)
