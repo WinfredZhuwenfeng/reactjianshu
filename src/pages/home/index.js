@@ -3,7 +3,7 @@ import Topic from './components/Topic';
 import List from './components/List';
 import Recommend from './components/Recommend';
 import Writer from './components/Writer';
-import axios from 'axios';
+import { actionCreaters } from './store'
 import { connect } from 'react-redux';
 import {
   HomeWrapper,
@@ -33,22 +33,13 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/homeData.json').then((res)=>{
-      const result = res.data.data;
-      const action = {
-        type: 'change_home_data',
-        articleList: result.articleList,
-        recommendList: result.recommendList,
-        topicList: result.topicList,
-        writerList: result.writerList
-      }
-      this.props.changeHomeData(action)
-    })
+    this.props.changeHomeData()
   }
 }
 
 const mapDispatch = (dispatch) => ({
-  changeHomeData(action) {
+  changeHomeData() {
+    const action = actionCreaters.getHomeInfo()
     dispatch(action)
   }
 })
