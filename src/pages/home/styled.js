@@ -22,3 +22,30 @@ export const HomeRight = styled.div`
   float: right;
   background-color: green;
 `
+
+export const TopicWrapper = styled.div` 
+  padding: 20px 0;
+  overflow: hidden;
+  margin-left: -10px;
+`
+
+export const TopicItem = styled.div` 
+  float: left;
+  background-color: red;
+  padding-right: 10px;
+  height: 32px;
+  line-height: 32px;
+  background-color: #f7f7f7;
+  border-radius: 4px;
+  border: 1px solid #dcdcdc;
+  font-size: 14px;
+  margin-left: 10px;
+  margin-bottom: 18px;
+  .topic-pic {
+    width: 32px;
+    height: 32px;
+    display: block;
+    float: left;
+    margin-right: 10px;
+  }
+`

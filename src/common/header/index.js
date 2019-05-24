@@ -91,11 +91,11 @@ class Header extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    focused: state.header.get('focused'),
-    mouseIn: state.header.get('mouseIn'),
-    list: state.header.get('list'),
-    page: state.header.get('page'),
-    totalPage: state.header.get('totalPage')
+    focused: state.getIn(['header', 'focused']),
+    mouseIn: state.getIn(['header', 'mouseIn']),
+    list: state.getIn(['header', 'list']),
+    page: state.getIn(['header', 'page']),
+    totalPage: state.getIn(['header', 'totalPage'])
   }
 }
 
