@@ -1,0 +1,59 @@
+{
+  "success": true,
+  "data": {
+    "topicList": [{
+      "id": 1,
+      "topic": "教育",
+      "imgUrl": "https://upload.jianshu.io/admin_banners/web_images/4592/22f5cfa984d47eaf3def6a48510cc87c157bf293.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
+    },
+    {
+      "id": 2,
+      "topic": "事业",
+      "imgUrl": "https://upload.jianshu.io/admin_banners/web_images/4592/22f5cfa984d47eaf3def6a48510cc87c157bf293.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
+    }],
+    "articleList": [{
+      "id": 1,
+      "title": "女人被“吻”时，会有这4种感受，别一无所知",
+      "imgUrl": "https://upload.jianshu.io/admin_banners/web_images/4592/22f5cfa984d47eaf3def6a48510cc87c157bf293.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540",
+      "desc" : "相爱的男女之间，最美好的一个小动作，就是“亲吻”，甜甜的一个香吻，沁人心脾，早上一个吻，上班路上都会美滋滋，睡前一个吻，梦里都会觉得很幸福。"
+    },
+    {
+      "id": 2,
+      "title": "女人被“吻”时，会有这4种感受，别一无所知",
+      "imgUrl": "https://upload.jianshu.io/admin_banners/web_images/4592/22f5cfa984d47eaf3def6a48510cc87c157bf293.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540",
+      "desc" : "相爱的男女之间，最美好的一个小动作，就是“亲吻”，甜甜的一个香吻，沁人心脾，早上一个吻，上班路上都会美滋滋，睡前一个吻，梦里都会觉得很幸福。"
+    },
+    {
+      "id": 3,
+      "title": "女人被“吻”时，会有这4种感受，别一无所知",
+      "imgUrl": "https://upload.jianshu.io/admin_banners/web_images/4592/22f5cfa984d47eaf3def6a48510cc87c157bf293.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540",
+      "desc" : "相爱的男女之间，最美好的一个小动作，就是“亲吻”，甜甜的一个香吻，沁人心脾，早上一个吻，上班路上都会美滋滋，睡前一个吻，梦里都会觉得很幸福。"
+    },
+    {
+      "id": 4,
+      "title": "女人被“吻”时，会有这4种感受，别一无所知",
+      "imgUrl": "https://upload.jianshu.io/admin_banners/web_images/4592/22f5cfa984d47eaf3def6a48510cc87c157bf293.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540",
+      "desc" : "相爱的男女之间，最美好的一个小动作，就是“亲吻”，甜甜的一个香吻，沁人心脾，早上一个吻，上班路上都会美滋滋，睡前一个吻，梦里都会觉得很幸福。"
+    }],
+    "recommendList": [{
+      "id": 1,
+      "imgUrl": "https://cdn2.jianshu.io/assets/web/banner-s-club-aa8bdf19f8cf729a759da42e4a96f366.png"
+    },
+    {
+      "id": 2,
+      "imgUrl": "https://cdn2.jianshu.io/assets/web/banner-s-7-1a0222c91694a1f38e610be4bf9669be.png"
+    }],
+    "writerList": [{
+      "id": 1,
+      "niceName": "qwe"
+    },
+    {
+      "id": 2,
+      "niceName": "asdf"
+    },
+    {
+      "id": 3,
+      "niceName": "zxcv"
+    }]
+  }
+}
