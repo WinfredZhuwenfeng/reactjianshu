@@ -16,6 +16,10 @@ export default (state = defaultState, action) => {
         'articleList': fromJS(action.articleList),
         'recommendList': fromJS(action.recommendList),
         'writerList': fromJS(action.writerList)
+      });
+    case actionTypes.CONCAT_HOME_MORE:
+      return state.merge({
+        'articleList': state.get('articleList').concat(fromJS(action.list)),
       })
     default:
       return state;

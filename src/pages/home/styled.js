@@ -105,3 +105,14 @@ export const WriterItem = styled.div`
   margin-bottom: 10px;
   border-bottom: 1px solid #dcdcdc;
 `
+export const ListMore = styled.div` 
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #5a5a5a;
+  color: #fff;
+  border-radius: 20px;
+  border-bottom: 1px solid #dcdcdc;
+  cursor: pointer;
+`
