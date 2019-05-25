@@ -10,7 +10,7 @@ export const HeaderWrapper = styled.div`
   max-width: 1440px;
 `;
 
-export const Logo = styled.a.attrs({href: '/'})`
+export const Logo = styled.div`
   height: 56px;
   position: absolute;
   top: 0;
