@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
+import {
+  DetailWrapper,
+  Header,
+  Content
+} from './styled';
 
 class detail extends Component {
   render() {
     return (
-      <div>detail~</div>
+      <DetailWrapper>
+        <Header>25岁后，这些习惯再不养成就完了</Header>
+        <Content>
+          <img src="https://upload.jianshu.io/admin_banners/web_images/4592/22f5cfa984d47eaf3def6a48510cc87c157bf293.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540" alt="" />
+          <p>25岁是一个比较尴尬的年纪，一部分25岁的人觉得自己还是青年，还有一部分人觉得自己已经是一个成年人了。25岁是人生的一个转折点，你的身体将不如20岁时年轻，你的状态也应该调整。</p>
+          <p>25岁是一个比较尴尬的年纪，一部分25岁的人觉得自己还是青年，还有一部分人觉得自己已经是一个成年人了。25岁是人生的一个转折点，你的身体将不如20岁时年轻，你的状态也应该调整。</p>
+          <p>25岁是一个比较尴尬的年纪，一部分25岁的人觉得自己还是青年，还有一部分人觉得自己已经是一个成年人了。25岁是人生的一个转折点，你的身体将不如20岁时年轻，你的状态也应该调整。</p>
+          <p>25岁是一个比较尴尬的年纪，一部分25岁的人觉得自己还是青年，还有一部分人觉得自己已经是一个成年人了。25岁是人生的一个转折点，你的身体将不如20岁时年轻，你的状态也应该调整。</p>
+        </Content>
+      </DetailWrapper>
     )
   }
 }
