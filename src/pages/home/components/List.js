@@ -5,7 +5,7 @@ import { actionCreaters } from '../store';
 
 class List extends Component {
   render() {
-    const { articleList, handleAddMore } = this.props
+    const { articleList, articlePage, handleAddMore } = this.props
     return (
       <ListWrapper>
         {
@@ -25,19 +25,20 @@ class List extends Component {
             )
           })
         }
-        <ListMore onClick={handleAddMore}>加载更多</ListMore>
+        <ListMore onClick={()=>handleAddMore(articlePage)}>加载更多</ListMore>
       </ListWrapper>
     )
   }
 }
 
 const mapState = (state) => ({
-  articleList: state.getIn(['home', 'articleList'])
+  articleList: state.getIn(['home', 'articleList']),
+  articlePage: state.getIn(['home', 'articlePage'])
 })
 
 const mapDispatch = (dispatch) => ({
-  handleAddMore() {      
-      dispatch(actionCreaters.addHomeMore())
+  handleAddMore(articlePage) {      
+      dispatch(actionCreaters.addHomeMore(articlePage))
     }
 })
 export default connect(mapState, mapDispatch)(List);

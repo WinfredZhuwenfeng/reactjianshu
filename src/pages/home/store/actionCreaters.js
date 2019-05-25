@@ -9,9 +9,10 @@ const changeHomeData = (result) => ({
   writerList: result.writerList
 });
 
-const concatHomeMore = (list) => ({
+const concatHomeMore = (list, articlePage) => ({
   type: actionTypes.CONCAT_HOME_MORE,
-  list
+  list,
+  articlePage: articlePage + 1
 })
 
 export const getHomeInfo = () => {
@@ -23,11 +24,11 @@ export const getHomeInfo = () => {
   }
 }
 
-export const addHomeMore = () => {
+export const addHomeMore = (articlePage) => {
   return (dispatch) => {
-    axios.get('/api/homeMoreList.json').then((res)=>{
+    axios.get('/api/homeMoreList.json?page='+ (articlePage + 1)).then((res)=>{
       const result = res.data.data;
-      dispatch(concatHomeMore(result))
+      dispatch(concatHomeMore(result, articlePage))
     })
   }
 }

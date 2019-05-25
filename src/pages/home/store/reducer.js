@@ -2,10 +2,11 @@ import { fromJS } from 'immutable';
 import * as actionTypes from './actionTypes';
 
 const defaultState = fromJS({
-  'topicList': [],
-  'articleList': [],
-  'recommendList': [],
-  'writerList': []
+  topicList: [],
+  articleList: [],
+  recommendList: [],
+  writerList: [],
+  articlePage: 1
 });
 
 export default (state = defaultState, action) => {
@@ -20,6 +21,7 @@ export default (state = defaultState, action) => {
     case actionTypes.CONCAT_HOME_MORE:
       return state.merge({
         'articleList': state.get('articleList').concat(fromJS(action.list)),
+        articlePage: fromJS(action.articlePage)
       })
     default:
       return state;
