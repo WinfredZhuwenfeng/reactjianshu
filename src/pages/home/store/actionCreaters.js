@@ -15,6 +15,11 @@ const concatHomeMore = (list, articlePage) => ({
   articlePage: articlePage + 1
 })
 
+const showScrollAction = (show) => ({
+  type: actionTypes.SHOW_SCROLL,
+  scrollShow: show
+})
+
 export const getHomeInfo = () => {
   return (dispatch) => {
     axios.get('/api/homeData.json').then((res)=>{
@@ -30,5 +35,11 @@ export const addHomeMore = (articlePage) => {
       const result = res.data.data;
       dispatch(concatHomeMore(result, articlePage))
     })
+  }
+}
+
+export const showScrollTop = (show) => {
+  return (dispatch) => {
+    dispatch(showScrollAction(show))
   }
 }

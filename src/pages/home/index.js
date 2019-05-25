@@ -5,6 +5,7 @@ import Recommend from './components/Recommend';
 import Writer from './components/Writer';
 import { actionCreaters } from './store'
 import { connect } from 'react-redux';
+import { ScrollTop } from './styled'
 import {
   HomeWrapper,
   HomeLeft,
@@ -12,6 +13,9 @@ import {
 } from './styled';
 
 class Home extends Component {
+  handleScrollTop = () => {    
+    document.documentElement.scrollTo(0, 0)
+  }
   render() {
     return (
       <HomeWrapper>
@@ -28,19 +32,39 @@ class Home extends Component {
           <Recommend />
           <Writer />
         </HomeRight>
+        {this.props.scrollShow ? <ScrollTop onClick={this.handleScrollTop}>顶部</ScrollTop>: null}        
       </HomeWrapper>
     )
   }
 
   componentDidMount() {
-    this.props.changeHomeData()
+    this.props.changeHomeData();
+    this.bindEvents()
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.props.changScrollShow)
+  }
+  bindEvents() {
+    window.addEventListener('scroll', this.props.changScrollShow)
   }
 }
+
+const mapState = (state) => ({
+  scrollShow: state.getIn(['home', 'scrollShow'])
+})
 
 const mapDispatch = (dispatch) => ({
   changeHomeData() {
     const action = actionCreaters.getHomeInfo()
     dispatch(action)
+  },
+  changScrollShow() {
+    if(document.documentElement.scrollTop > 200) {
+      dispatch(actionCreaters.showScrollTop(true))
+    }else {
+      dispatch(actionCreaters.showScrollTop(false))
+    }
   }
 })
-export default connect(null, mapDispatch)(Home);
+export default connect(mapState, mapDispatch)(Home);

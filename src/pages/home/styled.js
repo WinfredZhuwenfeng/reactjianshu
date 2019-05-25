@@ -116,3 +116,18 @@ export const ListMore = styled.div`
   border-bottom: 1px solid #dcdcdc;
   cursor: pointer;
 `
+
+export const ScrollTop = styled.div` 
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  background-color: #5a5a5a;
+  color: #fff;
+  border-radius: 20px;
+  border-bottom: 1px solid #dcdcdc;
+  cursor: pointer;
+`
