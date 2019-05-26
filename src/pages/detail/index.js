@@ -9,6 +9,7 @@ import {
 
 class detail extends PureComponent {
   render() {
+    console.log(this.props.match.params.id)
     const { header, content } = this.props;
     return (
       <DetailWrapper>
@@ -18,7 +19,7 @@ class detail extends PureComponent {
     )
   }
   componentDidMount() {
-    this.props.getDetail()
+    this.props.getDetail(this.props.match.params.id)
   }
 }
 
@@ -29,8 +30,8 @@ const mapState = (state) => ({
 })
 
 const mapDispatch = (dispatch) => ({
-  getDetail() {
-    dispatch(actionCreaters.getDetail());
+  getDetail(id) {
+    dispatch(actionCreaters.getDetail(id));
   }
 })
 export default connect(mapState, mapDispatch)(detail);

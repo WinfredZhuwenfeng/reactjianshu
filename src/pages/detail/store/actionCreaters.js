@@ -6,9 +6,9 @@ const changeDetailData = (title, content) => ({
   title,
   content
 })
-export const getDetail = () => {
+export const getDetail = (id) => {
   return (dispatch) => {  
-    axios.get('/api/detailData.json').then((res)=>{
+    axios.get('/api/detailData.json?id=' + id).then((res)=>{
       const result = res.data.data;
       dispatch(changeDetailData(result.title, result.content))      
     })
