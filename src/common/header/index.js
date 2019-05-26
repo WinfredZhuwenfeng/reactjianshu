@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import { actionCreaters } from './store';
+import { actionCreaters as loginActionCreaters } from '../../pages/login/store';
 import { Link } from 'react-router-dom';
 import {
   HeaderWrapper,
@@ -54,7 +55,7 @@ class Header extends PureComponent {
     }
   }
   render() {    
-    const { focused, list, handleBlur, handleFocuse} = this.props
+    const { focused, list, handleBlur, handleFocuse, loginState, logout } = this.props
     return (
       <HeaderWrapper>
           <Link to="/">
@@ -65,7 +66,10 @@ class Header extends PureComponent {
             <NavItem className="left"><i className="iconfont iconshouji"></i>下载App</NavItem>
             <NavItem className="right"><i className="iconfont iconAa"></i></NavItem>
             <NavItem className="right"><i className="iconfont iconzuanshi"></i>会员</NavItem>
-            <NavItem className="right">登录</NavItem>
+            {loginState ? 
+              <NavItem className="right" onClick={logout}>退出</NavItem> : 
+              <Link to="/login"><NavItem className="right" >登录</NavItem></Link>
+            }
             <NavSerarchWrapper>
               <CSSTransition
                  in={focused} 
@@ -98,7 +102,8 @@ const mapStateToProps = (state) => {
     mouseIn: state.getIn(['header', 'mouseIn']),
     list: state.getIn(['header', 'list']),
     page: state.getIn(['header', 'page']),
-    totalPage: state.getIn(['header', 'totalPage'])
+    totalPage: state.getIn(['header', 'totalPage']),
+    loginState: state.getIn(['login', 'loginState'])
   }
 }
 
@@ -133,6 +138,9 @@ const mapDispatchToProps = (dispatch) => {
       }else {
         dispatch(actionCreaters.ListSwitchClick(1))
       }
+    },
+    logout() {
+      dispatch(loginActionCreaters.logout())
     }
   }
 }
