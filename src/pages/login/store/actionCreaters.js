@@ -20,5 +20,14 @@ export const login = (account, pwd) => {
         }else {
           alert('登录失败')
         }
-      }))
+      })
+      // axios.post('/api/loginData.json',{account, pwd}).then((res)=>{
+      //   const result = res.data.data;
+      //     if(result) {
+      //       dispatch(changeLogin())
+      //     }else {
+      //       alert('登录失败')
+      //     }
+      // })
+    )
 }
